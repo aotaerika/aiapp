@@ -1,0 +1,38 @@
+
+<h1>商品予測AI</h1><a href="{% url "home" %}">トップページに戻る</a>
+
+{% if title%}
+<p>品　　名：{{product_name}}</br>
+カテゴリ：{{category}}</p>
+<form action="{% url "tf_idf"%}" method="POST">
+ 
+
+<label>
+  <input type="checkbox" name="input_indno" value={{input_indno}} checked="checked">
+  
+ </label>
+</br>
+
+
+
+■仕　様■　優先したい項目をチェックしてください。
+</br>
+ {%for word in wakati_word%}
+ <label>
+  <input type="checkbox" name="level" value={{word}} checked="checked">
+  {{word}}
+ </label>
+
+ {%endfor%}
+{% endif%}
+
+
+
+
+<input type="submit" name="tf_idf" value="送信する">
+{% csrf_token %}
+</form>
+{% if tf_idf%}
+<p>優先する：{{priority_word}}</p>
+</form>
+{% endif%}

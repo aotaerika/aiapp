@@ -1,11 +1,38 @@
+
 <h1>商品予測AI</h1>
-<p>Enter title</p>
+<p>発注コードを入力してください。(半角ハイフン無し)</p>
 <form action="{% url "home"%}" method="POST">
 
     <input type="text" name="title">
     {% csrf_token %}
-    <button type="submit">Send</button>
+    <button type="submit">検索</button>
 </form>
 {% if title%}
-<h1>Prediction: {{ title }}</h1>
+<p>品　　名：{{product_name}}</br>
+カテゴリ：{{category}}</p>
+{% endif%}
+
+</br>
+
+{% if title%}
+
+■仕　様■　優先したい項目をチェックしてください。
+</br>
+{%for word in wakati_word%}
+<label>
+  <input type="checkbox" name="level" value={{word}} checked="checked">
+  {{word}}
+</label>
+
+{%endfor%}
+{% endif%}
+
+<form action="{% url "tf_idf"%}" method="POST">
+
+{% csrf_token %}
+<input type="submit" name="tf_idf" value="送信する">
+</form>
+{% if tf_idf%}
+<p>優先する：{{priority_word}}</p>
+</form>
 {% endif%}

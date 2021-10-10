@@ -2,3 +2,7 @@ pandas
 scikit-learn==0.24.2
 django==3.2
 gunicorn
+mecab-python3==1.0.4
+lxml
+beautifulsoup4-4.10.0 bs4-0.0.1 soupsieve-2.2.1
+html5lib-1.1 webencodings-0.5.1
