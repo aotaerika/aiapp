@@ -13,7 +13,7 @@ category_data=pd.read_csv("idx2category.csv")
 idx2category={row.k:row.v for idx , row in category_data.iterrows()}
 with open("rdmf.pickle",mode="rb") as f:
     model=pickle.load(f)
-sample_df=pd.read_csv("cut_products.csv",header=0)
+sample_df=pd.read_csv("all_products.csv",header=0)
 sample_df=pd.DataFrame(sample_df)
 
 tagger = MeCab.Tagger('-Owakati')
